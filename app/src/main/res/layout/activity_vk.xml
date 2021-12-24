@@ -64,30 +64,36 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress3" />
 
-    <Button
+
+    <!--Твой способ создания иконки вполне нормальный. Но будет хорошо, если ты разберешся в том как это сделал я. Ты мог заметить, что есть несколько видов Button, MaterialButton, AppCompatButton. Если упростить, то это несколкько итераций развития кнопок с 2007 года. Они не изменялись а просто добовлялись новые для обеспечения обратной совместимости. Но будет лучше если ты почитаешь про это сам. Я лишь даю наводку. А еще есть такоц крутой сайт как Material.IO посмотри-->
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/button4"
         android:layout_width="386dp"
         android:layout_height="50dp"
         android:layout_marginBottom="16dp"
         android:layout_weight="1"
+        app:iconSize="25dp"
         android:text="Войти через Facebook"
         android:textAllCaps="false"
+        app:icon="@drawable/facebook_f_icon"
+        app:iconTint="@android:color/transparent"
+        app:iconTintMode="screen"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:adjustViewBounds="false"
-        android:translationZ="10dp"
-        app:layout_constraintBottom_toBottomOf="@+id/button4"
-        app:layout_constraintStart_toStartOf="@+id/button4"
-        app:layout_constraintTop_toTopOf="@+id/button4"
-        app:srcCompat="@drawable/facebook_f_icon" />
+    <!--    <ImageView-->
+    <!--        android:id="@+id/imageView3"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginStart="8dp"-->
+    <!--        android:layout_marginTop="8dp"-->
+    <!--        android:layout_marginBottom="8dp"-->
+    <!--        android:adjustViewBounds="false"-->
+    <!--        android:translationZ="10dp"-->
+    <!--        app:layout_constraintBottom_toBottomOf="@+id/button4"-->
+    <!--        app:layout_constraintStart_toStartOf="@+id/button4"-->
+    <!--        app:layout_constraintTop_toTopOf="@+id/button4"-->
+    <!--        app:srcCompat="@drawable/facebook_f_icon" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
