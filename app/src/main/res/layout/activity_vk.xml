@@ -1,86 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<!--Зачем  тебе делать scale элемента если ты просто изначально можешь задать ему нормальный размер. Я ранее говорил, что использование констант допустими в режких случаях, и в связке с ImageView и картинками это и есть один из режких случаев, так что тут окей и можно было указать все просто без scaleX и scaleY-->
+
+<!--Мой тебе совет. Никогда не используй margin(или padding) > 50dp. Все сломается. Они нужны для того что бы делать небольшие отступы между элементами, а не километровые зазоры.-->
+<!--Почему ты выбрал constraintLayout? Если просто потренироватся, то окей, но на самом деле тут гораздо лучше подойдет LinearLayout. Тут же все элементы последовательно располеженны друг за другом. Лично я редко использую Contraint. С Linearom быстрее, проще и нет возни с привязками. А Constraint я делаю, когда слишком сложный экран и Linear не справляется.-->
+<!--Погугли такой тег как <Space> и попробуй использовать его в сочетании с аттрибутом android:weight. Попробуй переделать с ними хотя бы этот экран. Очень полезные штуки, если разберешся с ними, то тебе понравится-->
+
+<!--Хорошо, что ты разобрался с темами. Дело в том что Google как создатель android анально принудительно вынуждает разработчиков делать кнопки одинакового цвета. Это дезигн MaterialDesign. Как вариант использовать backgroundTint. Я кстати говорил об этом в видосе. Это как бы такой background, который накладывается поверх основного background. Но вообще в реадьных проектах есть нормально выстроенная дизайн система и кнопки обычно везде просто действительно одинакового цвета-->
+<!--    Атата за ширину и высоту в конкретных пикселях. Чем тебе match_parent и wrap_content не понравились. Смотри, я забыл об этом сказать в лекции, но там на экране preview справа внизу есть две диагональные полосочки, потянув, которые ты можешь менять размер preview. Потяни и увидь, что изза конкретных значения размеров все ломается. Константные размеры испльзуются редко в исключительных случаях, так что пока что лучше забудь-->
+
+
+<!--Твой способ создания иконки вполне нормальный. Но будет хорошо, если ты разберешся в том как это сделал я. Ты мог заметить, что есть несколько видов Button, MaterialButton, AppCompatButton. Если упростить, то это несколкько итераций развития кнопок с 2007 года. Они не изменялись а просто добовлялись новые для обеспечения обратной совместимости. Но будет лучше если ты почитаешь про это сам. Я лишь даю наводку. А еще есть такоц крутой сайт как Material.IO посмотри-->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="16dp">
 
-    <!--Зачем  тебе делать scale элемента если ты просто изначально можешь задать ему нормальный размер. Я ранее говорил, что использование констант допустими в режких случаях, и в связке с ImageView и картинками это и есть один из режких случаев, так что тут окей и можно было указать все просто без scaleX и scaleY-->
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_weight="1"
-        app:layout_constraintBottom_toTopOf="@+id/editTextTextEmailAddress3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/vk_com_logo" />
 
-    <!--Мой тебе совет. Никогда не используй margin(или padding) > 50dp. Все сломается. Они нужны для того что бы делать небольшие отступы между элементами, а не километровые зазоры.-->
-    <!--Почему ты выбрал constraintLayout? Если просто потренироватся, то окей, но на самом деле тут гораздо лучше подойдет LinearLayout. Тут же все элементы последовательно располеженны друг за другом. Лично я редко использую Contraint. С Linearom быстрее, проще и нет возни с привязками. А Constraint я делаю, когда слишком сложный экран и Linear не справляется.-->
-    <!--Погугли такой тег как <Space> и попробуй использовать его в сочетании с аттрибутом android:weight. Попробуй переделать с ними хотя бы этот экран. Очень полезные штуки, если разберешся с ними, то тебе понравится-->
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="2" />
+
     <EditText
         android:id="@+id/editTextTextEmailAddress3"
-        android:layout_width="385dp"
-        android:layout_height="45dp"
-        android:layout_marginBottom="335dp"
-        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_weight="0"
         android:ems="10"
         android:hint="Email или телефон"
         android:inputType="textEmailAddress"
-        app:layout_constraintBottom_toTopOf="@+id/button4"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         tools:ignore="TouchTargetSizeCheck" />
 
     <EditText
         android:id="@+id/editTextTextPassword"
-        android:layout_width="385dp"
-        android:layout_height="43dp"
-        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_weight="0"
         android:ems="10"
         android:hint="Пароль"
         android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress3"
         tools:ignore="TouchTargetSizeCheck" />
 
-    <!--Хорошо, что ты разобрался с темами. Дело в том что Google как создатель android анально принудительно вынуждает разработчиков делать кнопки одинакового цвета. Это дезигн MaterialDesign. Как вариант использовать backgroundTint. Я кстати говорил об этом в видосе. Это как бы такой background, который накладывается поверх основного background. Но вообще в реадьных проектах есть нормально выстроенная дизайн система и кнопки обычно везде просто действительно одинакового цвета-->
-    <!--    Атата за ширину и высоту в конкретных пикселях. Чем тебе match_parent и wrap_content не понравились. Смотри, я забыл об этом сказать в лекции, но там на экране preview справа внизу есть две диагональные полосочки, потянув, которые ты можешь менять размер preview. Потяни и увидь, что изза конкретных значения размеров все ломается. Константные размеры испльзуются редко в исключительных случаях, так что пока что лучше забудь-->
     <Button
         android:id="@+id/button3"
-        android:layout_width="386dp"
+        android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginTop="43dp"
-        android:layout_weight="1"
-        android:backgroundTint="#000000"
+        android:layout_marginTop="16dp"
+        android:layout_weight="0"
+        android:backgroundTint="#5884c5"
         android:text="Войти"
         android:textAllCaps="false"
-        android:textColor="#fff"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress3" />
+        android:textColor="#fff" />
 
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="3" />
 
-    <!--Твой способ создания иконки вполне нормальный. Но будет хорошо, если ты разберешся в том как это сделал я. Ты мог заметить, что есть несколько видов Button, MaterialButton, AppCompatButton. Если упростить, то это несколкько итераций развития кнопок с 2007 года. Они не изменялись а просто добовлялись новые для обеспечения обратной совместимости. Но будет лучше если ты почитаешь про это сам. Я лишь даю наводку. А еще есть такоц крутой сайт как Material.IO посмотри-->
     <com.google.android.material.button.MaterialButton
         android:id="@+id/button4"
-        android:layout_width="386dp"
+        style="?attr/materialButtonOutlinedStyle"
+        android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginBottom="16dp"
-        android:layout_weight="1"
-        app:iconSize="25dp"
+
+        android:layout_weight="0"
         android:text="Войти через Facebook"
         android:textAllCaps="false"
+        android:textColor="#000"
         app:icon="@drawable/facebook_f_icon"
+        app:iconSize="25dp"
         app:iconTint="@android:color/transparent"
-        app:iconTintMode="screen"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:iconTintMode="screen" />
+
+</LinearLayout>
 
     <!--    <ImageView-->
     <!--        android:id="@+id/imageView3"-->
@@ -95,5 +99,3 @@
     <!--        app:layout_constraintStart_toStartOf="@+id/button4"-->
     <!--        app:layout_constraintTop_toTopOf="@+id/button4"-->
     <!--        app:srcCompat="@drawable/facebook_f_icon" />-->
-
-</androidx.constraintlayout.widget.ConstraintLayout>
