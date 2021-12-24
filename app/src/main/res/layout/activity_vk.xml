@@ -6,13 +6,12 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <!--Зачем  тебе делать scale элемента если ты просто изначально можешь задать ему нормальный размер. Я ранее говорил, что использование констант допустими в режких случаях, и в связке с ImageView и картинками это и есть один из режких случаев, так что тут окей и можно было указать все просто без scaleX и scaleY-->
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="wrap_content"
-        android:layout_height="36dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_weight="1"
-        android:scaleX="2.5"
-        android:scaleY="2.5"
         app:layout_constraintBottom_toTopOf="@+id/editTextTextEmailAddress3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
